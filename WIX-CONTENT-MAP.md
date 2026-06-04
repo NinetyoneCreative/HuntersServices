@@ -94,16 +94,23 @@ H1 "Pest Control in [City], California" → local intro → badges (Serving all 
 Response · 4.3★ on Google) → "Your local [City] pest control team" (county + neighborhood + seasonal
 copy) → sidebar quote form → embedded Google map of the city → 4 local FAQs → CTA.
 
+Every service area now has its own dedicated page (11 total). There is no longer an "All Service
+Areas" catch-all link — the nav "Service Areas" item lists all 11 pages and links to the home
+"Serving Northern California" section (`/index.html#service-areas`).
+
 | Slug | H1 | County / locale notes |
 |---|---|---|
 | `chico` | Pest Control in Chico, California | Butte County; Bidwell Park, student rentals, mature trees, warm summers |
 | `oroville` | Pest Control in Oroville, California | Butte County; home/HQ city, foothills |
 | `paradise` | Pest Control in Paradise, California | Butte County; ridge community, rebuilding |
+| `durham` | Pest Control in Durham, California | Butte County; rural/ag, orchards, country properties |
+| `gridley` | Pest Control in Gridley, California | Butte County; "Kiwi Capital," Feather River farm country |
 | `sacramento` | Pest Control in Sacramento, California | Sacramento region; second office `(916) 273-8911` |
 | `redding` | Pest Control in Redding, California | Shasta County; hot valley summers |
-
-**Serviced (no dedicated page, list site-wide):** Chico, Oroville, Paradise, Durham, Gridley,
-Sacramento, Redding, Plumas County, Stockton, Shasta County, Colusa County.
+| `stockton` | Pest Control in Stockton, California | San Joaquin County; Delta climate, commercial corridors |
+| `plumas-county` | Pest Control in Plumas County, California | Mountain communities: Quincy, Portola, Graeagle, Chester; cabins |
+| `shasta-county` | Pest Control in Shasta County, California | Redding/Anderson/Shasta Lake; very hot summers |
+| `colusa-county` | Pest Control in Colusa County, California | Sacramento Valley ag: Colusa, Williams, Arbuckle, Maxwell; rice country |
 
 ---
 
