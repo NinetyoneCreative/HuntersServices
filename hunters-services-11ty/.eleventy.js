@@ -3,6 +3,14 @@ const path = require("path");
 const crypto = require("crypto");
 
 module.exports = function (eleventyConfig) {
+  // Date filters for the blog collection + sitemap
+  const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  eleventyConfig.addFilter("readableDate", (d) => {
+    const dt = new Date(d);
+    return `${MONTHS[dt.getUTCMonth()]} ${dt.getUTCDate()}, ${dt.getUTCFullYear()}`;
+  });
+  eleventyConfig.addFilter("isoDate", (d) => new Date(d).toISOString().slice(0, 10));
+
   // Static assets copied verbatim to the output root
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy({ "src/css": "css" });
