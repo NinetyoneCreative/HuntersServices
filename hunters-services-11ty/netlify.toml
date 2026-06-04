@@ -1,15 +1,19 @@
-# Hunters Services — static site deploy config
+# Netlify build config used when the site's base directory is set to this folder
+# (hunters-services-11ty). Mirrors the repo-root netlify.toml so the build works
+# regardless of which base directory the Netlify UI is configured with.
 [build]
-  publish = "."
+  command = "npm run build"
+  publish = "_site"
 
-# Canonical host redirect: send the apex domain to www (matches canonical URLs).
+[build.environment]
+  NODE_VERSION = "20"
+
 [[redirects]]
   from = "https://hunterspestcontrol.com/*"
   to = "https://www.hunterspestcontrol.com/:splat"
   status = 301
   force = true
 
-# Security + sensible defaults on every response
 [[headers]]
   for = "/*"
   [headers.values]
@@ -18,7 +22,6 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "geolocation=(), microphone=(), camera=()"
 
-# Long cache for fingerprint-stable static assets
 [[headers]]
   for = "/assets/*"
   [headers.values]

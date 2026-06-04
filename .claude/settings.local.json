@@ -23,7 +23,9 @@
       "Bash(printf '\\\\n/* dev-watch-test-sentinel */\\\\n')",
       "Bash(curl -s http://127.0.0.1:8123/css/styles.css)",
       "Bash(node -e \"const f='src/css/styles.css';let s=require\\('fs'\\).readFileSync\\(f,'utf8'\\);s=s.replace\\(/\\\\n\\\\/\\\\* dev-watch-test-sentinel \\\\*\\\\/\\\\n/,''\\);require\\('fs'\\).writeFileSync\\(f,s\\)\")",
-      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:8123/areas/redding.html)"
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:8123/areas/redding.html)",
+      "Bash(curl -s -o /dev/null -w '%{http_code}' -L https://huntersservices.netlify.app__TRACKED_VAR__)",
+      "Bash(curl -s -I -L https://huntersservices.netlify.app/)"
     ]
   }
 }

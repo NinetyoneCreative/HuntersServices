@@ -1,0 +1,43 @@
+# Authoritative Netlify build config (repo root).
+# The site source is the Eleventy project in hunters-services-11ty/.
+# With `base` set, `command` runs in the base dir and `publish` is relative to it,
+# so the deploy is published from hunters-services-11ty/_site.
+[build]
+  base = "hunters-services-11ty"
+  command = "npm run build"
+  publish = "_site"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Apex -> www (fires once the custom domain is attached)
+[[redirects]]
+  from = "https://hunterspestcontrol.com/*"
+  to = "https://www.hunterspestcontrol.com/:splat"
+  status = 301
+  force = true
+
+# Security headers on every response
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+# Long cache for static assets
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, must-revalidate"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, must-revalidate"
