@@ -235,7 +235,8 @@ section{position:relative}
   display:flex;flex-direction:column;position:relative;
 }
 .svc-card:hover{transform:translateY(-8px);box-shadow:var(--shadow);border-color:var(--steel)}
-.svc-card .ph{height:172px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.svc-card .ph{height:172px;position:relative;overflow:visible;display:flex;align-items:center;justify-content:center}
+.svc-card .ph picture{position:absolute;inset:0;overflow:hidden;display:block}
 .svc-card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
 .svc-card:hover .ph img{transform:scale(1.07)}
 .svc-card .ico{
@@ -444,3 +445,17 @@ section{position:relative}
 /* ---------- Accessibility: keyboard focus ---------- */
 a:focus-visible,button:focus-visible,.btn:focus-visible,.faq-q:focus-visible,.hamburger:focus-visible{outline:3px solid var(--steel);outline-offset:2px;border-radius:6px}
 @media(prefers-reduced-motion:reduce){.float-call{animation:none}*{scroll-behavior:auto!important}}
+
+/* ---------- Desktop: ground hero technician flush with the wave divider ---------- */
+@media(min-width:981px){
+  .hero .container{padding-bottom:36px}
+  .hero-visual{align-self:end}
+}
+
+/* ---------- Key facts block (service & area pages) ---------- */
+.keyfacts{background:var(--gray-50);border:1px solid var(--gray-100);border-left:4px solid var(--blue);border-radius:12px;padding:1.1rem 1.3rem;margin:1.6rem 0}
+.keyfacts .kf-h{display:block;font-family:var(--display);font-weight:800;color:var(--navy);margin-bottom:.7rem;font-size:1.08rem}
+.keyfacts ul{list-style:none;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:.45rem 1.4rem}
+.keyfacts li{font-size:.95rem;color:var(--charcoal);position:relative;padding-left:1.4rem;line-height:1.4}
+.keyfacts li::before{content:"✓";position:absolute;left:0;color:var(--blue);font-weight:800}
+@media(max-width:560px){.keyfacts ul{grid-template-columns:1fr}}
