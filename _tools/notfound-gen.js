@@ -1,0 +1,29 @@
+const fs = require('fs');
+const path = require('path');
+const base = path.resolve('C:/Users/emvee/OneDrive/Desktop/Hunter Services/hunters-services-site');
+let src = fs.readFileSync(path.join(base, 'contact.html'), 'utf8');
+const head = src.slice(0, src.indexOf('<section class="page-hero">'));
+const tail = src.slice(src.indexOf('<footer class="site-footer">'));
+let out = head
+  .replace(/<title>[\s\S]*?<\/title>/, '<title>Page Not Found | Hunters Services</title>')
+  .replace(/<meta name="description"[^>]*>/, '<meta name="description" content="Sorry, we couldn’t find that page. Explore Hunters Services’ eco-friendly pest control across Northern California or get a free estimate.">')
+  .replace(/<link rel="canonical"[^>]*>/, '<meta name="robots" content="noindex,follow">');
+const middle = `<section class="page-hero"><div class="container">
+  <div class="breadcrumb"><a href="index.html">Home</a><span>›</span>Page Not Found</div>
+  <h1>We couldn’t find that page</h1>
+  <p>The page you’re looking for may have moved. Let’s get you back on track — or call your local, family-owned team and we’ll point you the right way.</p>
+  <div class="ph-badges"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> (530) 342-8950</span></div>
+</div></section>
+<section class="sec"><div class="container"><div class="cta-band reveal in">
+  <div class="inner">
+    <div><h2>Try one of these instead</h2><p>Browse our eco-friendly services, find your service area, or request a free estimate — we’re here to help.</p></div>
+    <div class="acts">
+      <a class="btn btn-primary btn-lg" href="index.html">Go to Homepage</a>
+      <a class="btn btn-ghost btn-lg" href="services.html">View Services</a>
+    </div>
+  </div>
+</div></div></section>
+`;
+out += middle + tail;
+fs.writeFileSync(path.join(base, '404.html'), out);
+console.log('404.html written (' + out.length + ' bytes)');

@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell($base = \"G:\\\\My Drive\\\\Design Work\\\\Hunters Pest Control\\\\Website Build\\\\files\\\\hunters-services-site\"; Get-ChildItem -Path $base -Recurse -Force -File | ForEach-Object { $_.FullName.Substring\\($base.Length+1\\) + \"  [\" + $_.Length + \"]\" })",
+      "PowerShell($zip = \"G:\\\\My Drive\\\\Design Work\\\\Hunters Pest Control\\\\Website Build\\\\files\\\\hunters-services-site.zip\"; Add-Type -AssemblyName System.IO.Compression.FileSystem; $z = [System.IO.Compression.ZipFile]::OpenRead\\($zip\\); $z.Entries | ForEach-Object { \"{0}  [{1}]\" -f $_.FullName, $_.Length }; $z.Dispose\\(\\))",
+      "PowerShell(function tryver\\($n,$c\\){ try { $v = & $c 2>$null; \"OK  $n : $v\" } catch { \"NO  $n\" } }; tryver \"python\" { \\(python --version\\) }; tryver \"python3\" { \\(python3 --version\\) }; tryver \"node\" { \\(node --version\\) }; tryver \"npm\" { \\(npm --version\\) }; tryver \"netlify\" { \\(netlify --version\\) }; tryver \"magick\" { \\(magick --version | Select-Object -First 1\\) }; tryver \"git\" { \\(git --version\\) })",
+      "PowerShell(cmd /c \"python --version\")",
+      "PowerShell(cmd /c \"py --version\")",
+      "PowerShell(cmd /c \"python -c \"\"import PIL; print\\('PIL', PIL.__version__\\)\"\" 2>&1\")",
+      "PowerShell($u = \"https://static.wixstatic.com/media/8c8a06_0b7d4c13092b42e1b970b330519d5560~mv2.jpg/v1/fill/w_1200,h_700,al_c,q_90,enc_auto/file.jpg\"; try { $r = Invoke-WebRequest -Uri $u -Method Head -UseBasicParsing -TimeoutSec 25; \"STATUS $\\($r.StatusCode\\)  TYPE $\\($r.Headers['Content-Type']\\)  LEN $\\($r.Headers['Content-Length']\\)\" } catch { \"ERR $\\($_.Exception.Message\\)\" })",
+      "PowerShell($src = \"G:\\\\My Drive\\\\Design Work\\\\Hunters Pest Control\\\\Website Build\\\\files\\\\hunters-services-site\\\\hunters-services-site\"; $dst = \"C:\\\\Users\\\\emvee\\\\OneDrive\\\\Desktop\\\\Hunter Services\\\\hunters-services-site\"; if \\(Test-Path $dst\\) { Remove-Item $dst -Recurse -Force }; Copy-Item $src $dst -Recurse -Force; Get-ChildItem $dst -Recurse -Filter desktop.ini -Force | Remove-Item -Force; \"Copied. Top-level:\"; Get-ChildItem $dst -Force | Select-Object Name; \"assets:\"; Get-ChildItem \"$dst\\\\assets\" -Force | Select-Object Name)",
+      "Bash(npx --yes http-server -p 8123 -c-1 --silent)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:8123/index.html)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:8123/services/termites.html)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:8123/areas/chico.html)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:8123/assets/technician.webp)",
+      "mcp__Claude_Preview__preview_start",
+      "mcp__57f91e71-c217-47f9-ad78-8b63bb43a773__netlify-user-services-reader",
+      "mcp__57f91e71-c217-47f9-ad78-8b63bb43a773__netlify-project-services-reader",
+      "Bash([ -f \"$f\" ])",
+      "Read(//c/Users/emvee/.claude/projects/C--Users-emvee-OneDrive-Desktop-Hunter-Services/memory/**)",
+      "Bash(curl -s http://127.0.0.1:8123/index.html)",
+      "Bash(printf '\\\\n/* dev-watch-test-sentinel */\\\\n')",
+      "Bash(curl -s http://127.0.0.1:8123/css/styles.css)",
+      "Bash(node -e \"const f='src/css/styles.css';let s=require\\('fs'\\).readFileSync\\(f,'utf8'\\);s=s.replace\\(/\\\\n\\\\/\\\\* dev-watch-test-sentinel \\\\*\\\\/\\\\n/,''\\);require\\('fs'\\).writeFileSync\\(f,s\\)\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:8123/areas/redding.html)"
+    ]
+  }
+}
