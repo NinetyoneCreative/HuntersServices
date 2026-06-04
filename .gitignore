@@ -12,6 +12,9 @@ _site/
 .env.*
 .netlify/
 
+# Local Claude Code settings (machine-specific)
+.claude/settings.local.json
+
 # OS / editor cruft
 .DS_Store
 Thumbs.db
