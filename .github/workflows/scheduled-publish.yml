@@ -1,0 +1,49 @@
+name: Scheduled publish
+
+# Publishes future-dated blog posts automatically.
+# Posts in hunters-services-11ty/src/posts/ with a `date` in the future are hidden
+# from production builds until their date passes (see posts.11tydata.js). This job
+# runs every morning at 8:00 AM Pacific; if a post became due in the last ~26 hours
+# it makes an empty commit, which triggers Netlify to rebuild and the post goes live.
+# You can also run it manually from the Actions tab (Run workflow) at any time.
+
+on:
+  schedule:
+    - cron: "15 15 * * *"   # 15:15 UTC = 8:15 AM PDT (7:15 AM PST in winter)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  publish-due-posts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check for posts that just became due
+        id: due
+        run: |
+          node -e '
+            const fs = require("fs"), path = require("path");
+            const dir = "hunters-services-11ty/src/posts";
+            const now = Date.now(), windowMs = 26 * 3600 * 1000;
+            let due = false;
+            for (const f of fs.readdirSync(dir)) {
+              if (!f.endsWith(".html")) continue;
+              const txt = fs.readFileSync(path.join(dir, f), "utf8");
+              const m = txt.match(/^date:\s*(.+)\s*$/m);
+              if (!m) continue;
+              const d = new Date(m[1].trim()).getTime();
+              if (!isNaN(d) && d <= now && d > now - windowMs) { due = true; console.log("Due:", f); }
+            }
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, "due=" + due + "\n");
+          '
+
+      - name: Trigger Netlify rebuild (manual run, or a post is due)
+        if: ${{ steps.due.outputs.due == 'true' || github.event_name == 'workflow_dispatch' }}
+        run: |
+          git config user.name "hunters-scheduler[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit --allow-empty -m "chore: publish scheduled blog post(s)"
+          git push
