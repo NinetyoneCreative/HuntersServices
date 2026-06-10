@@ -145,14 +145,20 @@
         return;
       }
 
-      /* Production: AJAX POST to Netlify Forms */
+      /* Production: AJAX POST to Netlify Forms.
+         Netlify intercepts POSTs site-wide; post to "/" (its documented AJAX
+         endpoint) rather than the success page. The form's action attr remains
+         the no-JS fallback redirect target. */
       var data = {};
       new FormData(f).forEach(function(val, key){ data[key] = val; });
-      data['form-name'] = 'estimate';
+      data['form-name'] = f.getAttribute('name') || 'estimate';
 
-      fetch(f.getAttribute('action') || '/', {
+      fetch('/', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Accept': 'application/json'
+        },
         body: encode(data)
       }).then(function(res){
         if(res.ok){ succeed(f); }

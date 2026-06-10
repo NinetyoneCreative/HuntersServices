@@ -38,14 +38,15 @@ extraSchema: |
       <div class="body"><form class="lead-form" style="box-shadow:none;border:0;padding:0" data-lead name="estimate" method="POST" action="/thank-you.html" data-netlify="true" data-netlify-honeypot="bot-field">
   <input type="hidden" name="form-name" value="estimate">
   <input type="hidden" name="source-page" value="areas/shasta-county">
+  <input type="hidden" name="subject" value="New Free Estimate Request — Hunters Services website">
   <p class="hp-field" hidden aria-hidden="true"><label>Don't fill this out if you're human: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
   <div class="ttl">Get a Quote</div>
   <p class="sub">Serving all of Shasta County.</p>
   <div class="field-row">
-    <div class="field"><label>Full Name</label><input type="text" name="name" aria-label="Full name" placeholder="Jane Smith" required></div>
-    <div class="field"><label>Phone</label><input type="tel" name="phone" aria-label="Phone number" placeholder="(530) 000-0000" required></div>
+    <div class="field"><label>Full Name</label><input type="text" name="name" autocomplete="name" aria-label="Full name" placeholder="Jane Smith" required></div>
+    <div class="field"><label>Phone</label><input type="tel" name="phone" autocomplete="tel" aria-label="Phone number" placeholder="(530) 000-0000" required></div>
   </div>
-  <div class="field"><label>Email</label><input type="email" name="email" aria-label="Email address" placeholder="you@email.com" required></div>
+  <div class="field"><label>Email</label><input type="email" name="email" autocomplete="email" aria-label="Email address" placeholder="you@email.com" required></div>
   <div class="field-row">
     <div class="field"><label>Service Needed</label><select name="service" aria-label="Service needed"><option value="">Select a service…</option><option>Pest Control</option><option>Termite Inspection & Repair</option><option>Bed Bug Treatment</option><option>Rodent Control</option><option>Wildlife, Bird & Bat Abatement</option><option>Weed Abatement</option><option>Tree Injections & Treatments</option><option>Other / Not sure</option></select></div>
     <div class="field"><label>Your City</label><select name="city" aria-label="Your city"><option value="">Select…</option><option>Chico</option><option>Oroville</option><option>Paradise</option><option>Sacramento</option><option>Redding</option><option>Durham</option><option>Gridley</option><option>Stockton</option><option>Other NorCal</option></select></div>
