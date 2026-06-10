@@ -172,8 +172,8 @@ section{position:relative}
 .hero::after{
   content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
   background:
-    linear-gradient(95deg,rgba(6,18,35,.95) 0%,rgba(8,24,46,.9) 28%,rgba(11,37,69,.6) 52%,rgba(11,37,69,.3) 76%,rgba(11,37,69,.14) 100%),
-    linear-gradient(to top,rgba(7,20,40,.68) 0%,transparent 34%);
+    linear-gradient(95deg,rgba(6,18,35,.9) 0%,rgba(8,24,46,.78) 30%,rgba(11,37,69,.55) 47%,rgba(11,37,69,.18) 60%,rgba(11,37,69,0) 75%),
+    linear-gradient(to top,rgba(7,20,40,.4) 0%,transparent 24%);
 }
 .hero .container{position:relative;z-index:2;padding-top:80px;padding-bottom:92px}
 .hero-copy{max-width:600px}
@@ -206,7 +206,7 @@ section{position:relative}
   .hero p.sub{margin-left:auto;margin-right:auto}
   .hero-actions,.hero-trust,.eyebrow{justify-content:center}
   .hero-bg img{object-position:center 12%}
-  .hero::after{background:linear-gradient(to bottom,rgba(7,20,40,.25) 0%,rgba(7,20,40,.45) 36%,rgba(8,22,44,.82) 60%,rgba(6,17,33,.95) 100%)}
+  .hero::after{background:linear-gradient(to bottom,rgba(7,20,40,.12) 0%,rgba(7,20,40,.28) 34%,rgba(8,22,44,.78) 58%,rgba(6,17,33,.95) 100%)}
   .eco-badge{display:none}
 }
 
