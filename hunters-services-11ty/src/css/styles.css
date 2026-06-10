@@ -167,12 +167,16 @@ section{position:relative}
     radial-gradient(900px 500px at 10% 110%,rgba(0,230,77,.16),transparent 55%),
     linear-gradient(160deg,var(--navy) 0%,#081d38 100%);
 }
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 26%;display:block}
 .hero::after{
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);
-  background-size:22px 22px;mask-image:linear-gradient(to bottom,#000,transparent 70%);
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(95deg,rgba(6,18,35,.95) 0%,rgba(8,24,46,.9) 28%,rgba(11,37,69,.6) 52%,rgba(11,37,69,.3) 76%,rgba(11,37,69,.14) 100%),
+    linear-gradient(to top,rgba(7,20,40,.68) 0%,transparent 34%);
 }
-.hero .container{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center;padding-top:70px;padding-bottom:80px}
+.hero .container{position:relative;z-index:2;padding-top:80px;padding-bottom:92px}
+.hero-copy{max-width:600px}
 .hero-rating{display:inline-flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);padding:.5rem .95rem;border-radius:999px;font-size:.88rem;margin-bottom:1.4rem;backdrop-filter:blur(6px)}
 .hero-rating .stars{color:#ffc400;letter-spacing:1px;font-size:.95rem}
 .hero-rating b{font-weight:800}
@@ -184,10 +188,10 @@ section{position:relative}
 .hero-trust span{display:inline-flex;align-items:center;gap:.5rem}
 .hero-trust svg{width:18px;height:18px;color:var(--green);flex-shrink:0}
 .hero-visual{position:relative;display:flex;justify-content:center;align-items:flex-end}
-.hero-visual .tech{max-height:560px;width:auto;max-width:100%;display:block;filter:drop-shadow(0 26px 38px rgba(0,0,0,.5));animation:float 6.5s ease-in-out infinite}
+.hero-visual .tech{max-height:600px;width:auto;max-width:100%;display:block;border-radius:18px;-webkit-mask-image:radial-gradient(125% 100% at 52% 42%, #000 54%, rgba(0,0,0,0) 100%);mask-image:radial-gradient(125% 100% at 52% 42%, #000 54%, rgba(0,0,0,0) 100%)}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
 .eco-badge{
-  position:absolute;bottom:54px;left:2px;z-index:3;background:#fff;color:var(--navy);border-radius:50%;
+  position:absolute;bottom:96px;right:40px;z-index:3;background:#fff;color:var(--navy);border-radius:50%;
   width:118px;height:118px;display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;box-shadow:var(--shadow);border:4px solid var(--green);transform:rotate(-8deg);
 }
@@ -197,12 +201,13 @@ section{position:relative}
 .hero-wave{position:absolute;bottom:-1px;left:0;width:100%;line-height:0;z-index:2}
 .hero-wave svg{width:100%;height:70px;display:block}
 @media(max-width:980px){
-  .hero .container{grid-template-columns:1fr;text-align:center;padding-top:46px;padding-bottom:60px}
+  .hero .container{text-align:center;padding-top:clamp(210px,54vw,340px);padding-bottom:54px}
+  .hero-copy{max-width:none}
   .hero p.sub{margin-left:auto;margin-right:auto}
   .hero-actions,.hero-trust,.eyebrow{justify-content:center}
-  .hero-visual{order:-1;max-width:360px;margin:0 auto}
-  .hero-visual .tech{max-height:420px}
-  .eco-badge{width:92px;height:92px;bottom:30px;left:-4px}
+  .hero-bg img{object-position:center 12%}
+  .hero::after{background:linear-gradient(to bottom,rgba(7,20,40,.25) 0%,rgba(7,20,40,.45) 36%,rgba(8,22,44,.82) 60%,rgba(6,17,33,.95) 100%)}
+  .eco-badge{display:none}
 }
 
 /* ---------- Trust strip ---------- */
@@ -446,11 +451,7 @@ section{position:relative}
 a:focus-visible,button:focus-visible,.btn:focus-visible,.faq-q:focus-visible,.hamburger:focus-visible{outline:3px solid var(--steel);outline-offset:2px;border-radius:6px}
 @media(prefers-reduced-motion:reduce){.float-call{animation:none}*{scroll-behavior:auto!important}}
 
-/* ---------- Desktop: ground hero technician flush with the wave divider ---------- */
-@media(min-width:981px){
-  .hero .container{padding-bottom:36px}
-  .hero-visual{align-self:end}
-}
+/* (Hero is now a full-bleed background photo with a navy scrim — see .hero-bg / .hero::after) */
 
 /* ---------- Key facts block (service & area pages) ---------- */
 .keyfacts{background:var(--gray-50);border:1px solid var(--gray-100);border-left:4px solid var(--blue);border-radius:12px;padding:1.1rem 1.3rem;margin:1.6rem 0}
