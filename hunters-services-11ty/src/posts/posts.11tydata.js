@@ -14,7 +14,7 @@ const isHiddenFuture = (data) => {
 // Directory data: applies to every file in src/posts/.
 // Drop a new .html (or .md) file here with the front matter shown in posts/README,
 // and it auto-joins the "posts" collection, gets the blog layout, a /blog/<slug>.html
-// URL, and BlogPosting + BreadcrumbList schema — no script needed.
+// URL, and BlogPosting + BreadcrumbList schema, no script needed.
 module.exports = {
   layout: "layouts/post.njk",
   tags: "posts",

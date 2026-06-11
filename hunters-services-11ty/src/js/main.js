@@ -1,4 +1,4 @@
-/* Hunters Services — site interactions */
+/* Hunters Services, site interactions */
 (function(){
   "use strict";
 
@@ -111,7 +111,7 @@
     f.addEventListener('submit',function(e){
       e.preventDefault();
 
-      /* Honeypot — if the hidden field is filled, it's a bot. Pretend success, send nothing. */
+      /* Honeypot, if the hidden field is filled, it's a bot. Pretend success, send nothing. */
       var hp = f.querySelector('[name="bot-field"]');
       if(hp && hp.value){ succeed(f); return; }
 
@@ -124,11 +124,11 @@
         return;
       }
 
-      /* Basic rate limit — block rapid re-submits */
+      /* Basic rate limit, block rapid re-submits */
       try {
         var last = +localStorage.getItem('hs_last_submit') || 0;
         if(Date.now() - last < 4000){
-          showError(f, 'Just a moment — your request is already being sent.');
+          showError(f, 'Just a moment, your request is already being sent.');
           return;
         }
         localStorage.setItem('hs_last_submit', String(Date.now()));
@@ -165,7 +165,7 @@
         else { throw new Error('HTTP ' + res.status); }
       }).catch(function(){
         if(btn){ btn.disabled = false; delete btn.dataset.loading; btn.innerHTML = btnHTML; }
-        showError(f, 'Sorry — something went wrong sending your request. Please call us at <a href="tel:+15303428950">(530)&nbsp;342-8950</a> and we’ll take care of you.');
+        showError(f, 'Sorry, something went wrong sending your request. Please call us at <a href="tel:+15303428950">(530)&nbsp;342-8950</a> and we’ll take care of you.');
       });
     });
   });
