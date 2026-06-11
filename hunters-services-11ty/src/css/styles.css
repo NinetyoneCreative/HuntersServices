@@ -154,7 +154,7 @@ section{position:relative}
   .dropdown a:hover{background:rgba(255,255,255,.08);color:#fff}
   .hamburger{display:flex}
   .nav-phone{display:none}
-  .scrim{position:fixed;inset:0;background:rgba(7,20,38,.55);opacity:0;visibility:hidden;transition:.3s;z-index:1000;backdrop-filter:blur(2px)}
+  .scrim{position:fixed;inset:0;background:rgba(7,20,38,.55);opacity:0;visibility:hidden;transition:.3s;z-index:999;backdrop-filter:blur(2px)}
   .scrim.open{opacity:1;visibility:visible}
 }
 @media(min-width:1041px){.scrim{display:none}}
