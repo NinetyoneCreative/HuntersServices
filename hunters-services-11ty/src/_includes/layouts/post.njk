@@ -8,7 +8,7 @@ layout: layouts/base.njk
 </div></section>
 <section class="sec"><div class="container"><div class="post-wrap">
   <article class="prose reveal">
-    {% if hero %}<p class="post-hero"><picture><source srcset="/assets/blog/{{ hero }}.webp" type="image/webp"><img src="/assets/blog/{{ hero }}.jpg" alt="{{ title | safe }}" loading="eager" decoding="async"></picture></p>{% endif %}
+    {% if hero %}<p class="post-hero"><picture><source srcset="/assets/blog/{{ hero }}.webp" type="image/webp"><img src="/assets/blog/{{ hero }}.jpg" alt="{{ (heroAlt or title) | safe }}" loading="eager" decoding="async"></picture></p>{% endif %}
     {{ content | safe }}
   </article>
   <p class="post-back"><a href="/blog.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Back to all posts</a></p>
