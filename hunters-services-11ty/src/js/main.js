@@ -67,6 +67,8 @@
     window.dataLayer.push({ event: 'generate_lead', form_name: 'estimate', form_location: loc });
     if (typeof window.gtag === 'function'){
       window.gtag('event', 'generate_lead', { form_name: 'estimate', form_location: loc });
+      /* Google Ads conversion: "Website Lead Form Submit" (AW-940172114) */
+      window.gtag('event', 'conversion', { 'send_to': 'AW-940172114/li0KCM_vsbYdENLGp8AD' });
     }
     if (typeof window.fbq === 'function'){ window.fbq('track', 'Lead'); }
   }
